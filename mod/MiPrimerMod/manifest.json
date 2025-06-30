@@ -1,0 +1,9 @@
+{
+    "Name": "MiPrimerMod",
+    "Author": "Cesar",
+    "Version": "1.0.0",
+    "Description": "Este es mi primer mod para Stardew Valley.",
+    "UniqueID": "cesar.MiPrimerMod",
+    "EntryDll": "MiPrimerMod.dll",
+    "MinimumApiVersion": "3.0.0"
+}

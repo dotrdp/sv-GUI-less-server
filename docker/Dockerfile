@@ -98,7 +98,7 @@ RUN \
     rm -rf /etc/cont-env.d/LIBGL_DRIVERS_PATH
 
 # Copy mods
-COPY .output/mods /data/Mods
+#COPY .output/mods /data/Mods
 
 # Copy remaining files
 COPY docker/rootfs/ /
