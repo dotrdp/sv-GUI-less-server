@@ -4,7 +4,6 @@ MODS_DEST_DIR="/data/Mods"
 GAME_DEST_DIR="/data/Stardew"
 GAME_EXECUTABLE="${GAME_DEST_DIR}/StardewValley"
 SMAPI_EXECUTABLE="${GAME_DEST_DIR}/StardewModdingAPI"
-STEAM_DEST_DIR="/root/.steam/sdk64/"
 
 print_text_for_duration() {
     local text=$1
@@ -43,25 +42,21 @@ init_stardew() {
         return;
     fi
 
-    # Download & Install
-    echo "Installing Stardew Valley..."
+    # Download & Install from Google Drive
+    echo "Installing Stardew Valley from Google Drive..."
 
-    #steamcmd +@sSteamCmdForcePlatformType linux \
-       # +force_install_dir ${GAME_DEST_DIR} \
-      #  +login "${STEAM_USER}" "${STEAM_PASS}" "${STEAM_GUARD_CODE}" \
-     #   +app_update 413150 \
-    #    +quit
     apt install python3-pip
     pip3 install gdown
     gdown https://drive.google.com/uc?id=1ak4-p1b6rNsjM04deoPFEQfjtlBnoivQ
     tar -xvf stardew.tar.gz -C ${GAME_DEST_DIR}
     rm -f stardew.tar.gz
-    # Capture the exit status of the steamcmd command
+    
+    # Capture the exit status of the download command
     EXIT_STATUS=$?
 
     # Check if the command was successful
     if [ $EXIT_STATUS -ne 0 ]; then
-        print_error "Error: steamcmd command failed with exit status $EXIT_STATUS"
+        print_error "Error: Google Drive download failed with exit status $EXIT_STATUS"
         exit 1
     fi
 

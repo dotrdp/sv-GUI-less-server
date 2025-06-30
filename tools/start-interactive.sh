@@ -1,10 +1,14 @@
 #/bin/bash
 
-echo "Note: Steam credentials are required to download Stardew Valley, leave blank if already downloaded."
+echo "Note: This setup uses Google Drive download instead of Steam."
+echo "Steam credentials are not required."
 echo ""
-read -p "Enter your Steam username: " STEAM_USER
-echo ""
-read -sp "Enter your Steam password: " STEAM_PASS
+# Steam credentials disabled - using Google Drive download
+# read -p "Enter your Steam username: " STEAM_USER
+# echo ""
+# read -sp "Enter your Steam password: " STEAM_PASS
+STEAM_USER=""
+STEAM_PASS=""
 echo ""
 echo ""
 

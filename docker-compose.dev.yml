@@ -5,10 +5,11 @@ services:
         build:
             context: .
             dockerfile: ./docker/Dockerfile
-            args:
-                STEAM_USER: ${STEAM_USER}
-                STEAM_PASS: ${STEAM_PASS}
-                STEAM_GUARD_CODE: "${STEAM_GUARD_CODE}"
+            # Steam credentials not needed (using Google Drive download)
+            # args:
+            #     STEAM_USER: ${STEAM_USER}
+            #     STEAM_PASS: ${STEAM_PASS}
+            #     STEAM_GUARD_CODE: "${STEAM_GUARD_CODE}"
         container_name: stardew-dedicated-server
         ports:
             - ${GAME_PORT}:24642/udp
@@ -19,9 +20,10 @@ services:
             # [Optional] Extra mods to be loaded by the server (GenericModConfigMenu, TimeSpeed, etc.)
             - ./mods:/data/Mods/extra
         environment:
-            STEAM_USER: "${STEAM_USER}"
-            STEAM_PASS: "${STEAM_PASS}"
-            STEAM_GUARD_CODE: "${STEAM_GUARD_CODE}"
+            # Steam credentials not needed (using Google Drive download)
+            # STEAM_USER: "${STEAM_USER}"
+            # STEAM_PASS: "${STEAM_PASS}"
+            # STEAM_GUARD_CODE: "${STEAM_GUARD_CODE}"
             VNC_PASSWORD: "${VNC_PASSWORD}"
             DISABLE_RENDERING: "${DISABLE_RENDERING}"
 

@@ -21,7 +21,7 @@ ENV APP_NAME="Stardew Dedicated Server" \
     SMAPI_VERSION=4.1.10 \
     SMAPI_MODS_PATH=/data/Mods
 
-# Add 32-bit architecture and update the sources list for SteamCMD
+# Add 32-bit architecture and update the sources list
 RUN printf "\ndeb http://deb.debian.org/debian/ bullseye contrib non-free" >> /etc/apt/sources.list && \
     dpkg --add-architecture i386 && \
     apt-get update
@@ -39,16 +39,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen
 
-# Install SteamCMD
-RUN echo steam steam/question select "I AGREE" | debconf-set-selections && \
-    echo steam steam/license note '' | debconf-set-selections && \
-    apt-get install -y \
-    steamcmd && \
-    mv /usr/games/steamcmd /opt/base/bin/ && \
-    steamcmd +force_install_dir /data/steam +@sSteamCmdForcePlatformType linux +login anonymous +app_update 1007 +quit && \
-    mkdir -p /root/.steam/sdk64 && \
-    mv /data/steam/linux64/steamclient.so /root/.steam/sdk64/steamclient.so && \
-    rm -rf /data/steam
+# SteamCMD installation removed - not needed for Google Drive download method
 
 # Install GUI packages
 RUN apt-get install -y \
@@ -84,6 +75,7 @@ RUN add-pkg --virtual build git && \
 COPY docker/rootfs/data/images/junimo.png /data/images/junimo.png
 RUN install_app_icon.sh /data/images/junimo.png && \
     rm /data/images/junimo.png
+
 
 RUN \
     # Clear apt cache
