@@ -25,13 +25,10 @@ build-image:
 build-mod: $(shell find $(SRC_PATH)/**/*.cs -type f) $(SRC_PATH)/JunimoServer.csproj $(SRC_PATH)/manifest.json
 ifeq ($(CI), true)
 	dotnet build $(SRC_PATH)/JunimoServer.csproj -o $(BUILD_PATH) --configuration Release '/p:EnableModZip=false;EnableModDeploy=false;GamePath=$(CI_GAME_PATH)'
-else
-	dotnet build $(SRC_PATH)/JunimoServer.csproj -o $(BUILD_PATH) --configuration Debug
 endif
 	rm -rf $(DEST_PATH)
 	mkdir -p $(DEST_PATH)
-	cp $(BUILD_PATH)/JunimoServer.dll \
-	$(BUILD_PATH)/Google.Protobuf.dll \
+	cp $(BUILD_PATH)/Google.Protobuf.dll \
 	$(BUILD_PATH)/Grpc.Core.Api.dll \
 	$(BUILD_PATH)/Grpc.Net.Client.dll \
 	$(BUILD_PATH)/Grpc.Net.Common.dll \

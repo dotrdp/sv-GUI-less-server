@@ -46,12 +46,16 @@ init_stardew() {
     # Download & Install
     echo "Installing Stardew Valley..."
 
-    steamcmd +@sSteamCmdForcePlatformType linux \
-        +force_install_dir ${GAME_DEST_DIR} \
-        +login "${STEAM_USER}" "${STEAM_PASS}" "${STEAM_GUARD_CODE}" \
-        +app_update 413150 \
-        +quit
-
+    #steamcmd +@sSteamCmdForcePlatformType linux \
+       # +force_install_dir ${GAME_DEST_DIR} \
+      #  +login "${STEAM_USER}" "${STEAM_PASS}" "${STEAM_GUARD_CODE}" \
+     #   +app_update 413150 \
+    #    +quit
+    apt install python3-pip
+    pip3 install gdown
+    gdown https://drive.google.com/uc?id=1ak4-p1b6rNsjM04deoPFEQfjtlBnoivQ
+    tar -xvf stardew.tar.gz -C ${GAME_DEST_DIR}
+    rm -f stardew.tar.gz
     # Capture the exit status of the steamcmd command
     EXIT_STATUS=$?
 
