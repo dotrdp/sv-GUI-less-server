@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     ca-certificates \
     curl \
     locales \
+    python3-pip \
     # Includes pgrep for service handling
     procps \
     unzip \
