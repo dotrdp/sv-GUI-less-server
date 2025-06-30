@@ -45,7 +45,7 @@ init_stardew() {
     # Download & Install from Google Drive
     echo "Installing Stardew Valley from Google Drive..."
 
-    apt install python3-pip
+
     pip3 install gdown
     gdown https://drive.google.com/uc?id=1ak4-p1b6rNsjM04deoPFEQfjtlBnoivQ
     tar -xvf stardew.tar.gz -C ${GAME_DEST_DIR}
